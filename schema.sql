@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS kullanicilar (
+CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS kullanicilar (
 );
 
 -- Örnek veri
-INSERT INTO kullanicilar (name, email) VALUES 
+INSERT INTO users (name, email) VALUES 
   ('Hüseyin DOL', 'info@huseyindol.site'),
   ('Yağız Efe DOL', 'efe@huseyindol.site');
 
