@@ -9,13 +9,13 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type User struct {
+type UserModel struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`
 	Email string `json:"email"`
 }
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func GetHandler(w http.ResponseWriter, r *http.Request) {
 	// Vercel'den PostgreSQL bağlantı bilgilerini al
 	connStr := os.Getenv("POSTGRES_URL")
 	if connStr == "" {

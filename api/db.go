@@ -13,11 +13,12 @@ type DBResponse struct {
 	Version string `json:"version"`
 }
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func GetDBVersion(w http.ResponseWriter, r *http.Request) {
 	// Get connection string from environment variable
 	connStr := os.Getenv("DATABASE_URL")
 	if connStr == "" {
-		connStr = "postgresql://user:password@neon_hostname/dbname?sslmode=require"
+		http.Error(w, "DATABASE_URL environment variable not set", http.StatusInternalServerError)
+		return
 	}
 
 	// Connect to database
