@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go REST API Projesi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .container {
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 10px;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Go REST API Projesi</h1>
+
+  <div class="container">
+    <h2>API Endpointleri</h2>
+    <button onclick="getUsers()">Kullanıcıları Getir</button>
+    <button onclick="getDBVersion()">Veritabanı Versiyonu</button>
+
+    <div id="result">
+      <h3>Sonuç:</h3>
+      <pre id="output">Henüz bir istek yapılmadı.</pre>
+    </div>
+  </div>
+
+  <script>
+    async function getUsers() {
+      try {
+        const response = await fetch('/api/users');
+        const data = await response.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('output').textContent = 'Hata: ' + error.message;
+      }
+    }
+
+    async function getDBVersion() {
+      try {
+        const response = await fetch('/api/db');
+        const data = await response.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('output').textContent = 'Hata: ' + error.message;
+      }
+    }
+  </script>
+</body>
+
+</html>
