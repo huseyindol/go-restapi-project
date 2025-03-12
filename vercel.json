@@ -1,0 +1,4 @@
+{
+  "routes": [{ "src": "/api/kullanicilar(.*)", "dest": "/api/kullanicilar.go" }]
+}
+
